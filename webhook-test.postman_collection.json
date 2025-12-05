@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "56411fc2-6d25-4588-822a-97c06d2d722d",
+		"name": "Webhook Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47261807",
+		"_collection_link": "https://trisciajoy17-5004246.postman.co/workspace/Triscia-Joy-Mendoza's-Workspace~5ce8ae1f-c63e-406d-827b-7d988f110c40/collection/47261807-56411fc2-6d25-4588-822a-97c06d2d722d?action=share&source=collection_link&creator=47261807"
+	},
+	"item": [
+		{
+			"name": "http://127.0.0.1:5000/notify",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response contains status\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.status).to.eql(\"Notification received\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": \"100\",\r\n  \"email\": \"test@example.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/notify",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"notify"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
